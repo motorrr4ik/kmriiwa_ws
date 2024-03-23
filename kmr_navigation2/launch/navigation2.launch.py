@@ -30,7 +30,7 @@ def generate_launch_description():
         default=os.path.join(
             get_package_share_directory('kmr_navigation2'),
             'map',
-            'map_carto2scan3pc.yaml'))
+            'itmo_map.yaml'))
 
     param_dir = LaunchConfiguration(
         'params_file',
@@ -77,7 +77,6 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([state_publisher_launch_file_dir, '/state_publisher.launch.py']),
         ),
-
         #Node(
         #    package='kmr_navigation2',
         #   node_executable='navigation_support_node.py',
@@ -90,6 +89,6 @@ def generate_launch_description():
             node_name='rviz2',
             arguments=['-d', rviz_config_dir],
             parameters=[{'use_sim_time': use_sim_time}],
-            #output='screen'
+            # output='screen'
             ),
     ])
