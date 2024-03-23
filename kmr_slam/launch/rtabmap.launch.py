@@ -140,30 +140,30 @@ def generate_launch_description():
 
         # Nodes to launch
         Node(
-            package='rtabmap_ros', node_name='sync1', node_executable='rgbd_sync', output='screen',
+            package='rtabmap_ros', node_name='sync1', node_executable='rtabmap_sync', output='screen',
             parameters=[{'approx_sync':True, 'use_sim_time':use_sim_time}],
             remappings=remappings1,
             emulate_tty=True),
         Node(
-           package='rtabmap_ros', node_name='sync2', node_executable='rgbd_sync', output='screen',
+           package='rtabmap_ros', node_name='sync2', node_executable='rtabmap_sync', output='screen',
            parameters=[{'approx_sync':True, 'use_sim_time':use_sim_time}],
            remappings=remappings2,
            emulate_tty=True),
         Node(
-           package='rtabmap_ros', node_name='sync3', node_executable='rgbd_sync', output='screen',
+           package='rtabmap_ros', node_name='sync3', node_executable='rtabmap_sync', output='screen',
            parameters=[{'approx_sync':True, 'use_sim_time':use_sim_time}],
            remappings=remappings3,
            emulate_tty=True),
 
         Node(
-            package='rtabmap_ros', node_executable='rtabmap', output='screen',
+            package='rtabmap_ros', node_executable='rtabmap_slam', output='screen',
             parameters=rtabmap_parameters,
 	        remappings=remappings_scancloud,
             arguments=['-d'], #-d deletes the database before starting, otherwise the previous mapping session is loaded 
             emulate_tty=True,),
 
         Node(
-            package='rtabmap_ros', node_executable='rtabmapviz', output='screen',
+            package='rtabmap_ros', node_executable='rtabmap_viz', output='screen',
             parameters=rtabmap_parameters,
 	        remappings=remappings_scancloud,
             emulate_tty=True),
@@ -194,7 +194,7 @@ def generate_launch_description():
         #      emulate_tty=True,),
 
          Node(
-             package='rtabmap_ros', node_executable='point_cloud_aggregator', output='screen',
+             package='rtabmap_ros', node_executable='rtabmap_util', output='screen',
              #remappings=[('cloud1','points2_1'),('cloud2','points2_2'),('cloud3','points2_3')],
              parameters=[{'count': 2},{'approx_sync':True}],
              emulate_tty=True,),
